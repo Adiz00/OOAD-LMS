@@ -111,7 +111,7 @@
   ];
 
   // const IP='192.168.100.5'
-  const IP='192.168.0.114'
+  const IP='172.20.10.2'
   export {
    
     stdSidebarNavItems,adminSidebarNavItems,teacherSidebarNavItems,IP
