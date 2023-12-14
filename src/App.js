@@ -115,6 +115,7 @@ import TeacherAnnouncements  from "./component/pages/teacherAnnouncement/Teacher
 import TeacherGrade from "./component/pages/teacherGrade/TeacherGrade";
 import TeacherQuiz from "./component/pages/teacherQuiz/TeacherQuiz";
 import LoginForm from "./component/pages/login/LogInForm";
+import SignupForm from './component/pages/signUp/SignupForm';
 
 
 function App() {
@@ -132,8 +133,11 @@ console.log('user detail ',userDetail)
     }
 
   return (
+
     <Router>
     <div className="App">
+        
+          
       {user === 'admin' ? (
         <div>
           <Sidebar sidebarNavItems={adminSidebarNavItems} setUser={setUser} />
@@ -143,6 +147,22 @@ console.log('user detail ',userDetail)
             <Route path="/addCourse" element={<AddCourses />} />
             <Route path="/addStudent" element={<AddStudents />} />
             <Route path="/addTeacher" element={<AddTeachers />} />
+            {/* <Route path="/createInstitute" element={<SignupForm />} /> */}
+            
+            {/* </Route> */}
+          </Routes>
+        </div>
+      ) :
+      user === 'institute' ? (
+        <div>
+          <Sidebar sidebarNavItems={adminSidebarNavItems} setUser={setUser} />
+          <Routes>
+            {/* <Route path='/' element={<AppLayout />}> */}
+            <Route index element={<Dashboard />} />
+            <Route path="/addCourse" element={<AddCourses />} />
+            <Route path="/addStudent" element={<AddStudents />} />
+            <Route path="/addTeacher" element={<AddTeachers />} />
+            {/* <Route path="/createInstitute" element={<SignupForm />} /> */}
             
             {/* </Route> */}
           </Routes>
@@ -157,6 +177,7 @@ console.log('user detail ',userDetail)
           <Route path="/stdQuiz" element={<StdQuiz />} />
           <Route path="/studentGrade" element={<StudentGrade />} />
           <Route path="/stdAnnouncements" element={<StdAnnouncements userDetail={userDetail}/>} />
+          {/* <Route path="/createInstitute" element={<SignupForm />} /> */}
           {/* <Route path="/logout" element={<LoginForm />} /> */}
           {/* </Route> */}
         </Routes>
@@ -171,17 +192,29 @@ console.log('user detail ',userDetail)
           <Route path="/teacherAnnouncements" element={<TeacherAnnouncements userDetail={userDetail} />} />
           <Route path="/teacherQuiz" element={<TeacherQuiz />} />
           <Route path="/TeacherGrade" element={<TeacherGrade />} />
+          {/* <Route path="/createInstitute" element={<SignupForm />} /> */}
           {/* <Route path="/logout" element={<LoginForm />} /> */}
 
           {/* </Route> */}
         </Routes>
       </div>
       ) :  (
-        <LoginForm setUser={setUser} setUserDetail={setUserDetail} />
+        <div>
+          {/* <LoginForm setUser={setUser} setUserDetail={setUserDetail} /> */}
+        <Routes>  
+          <Route index element={<LoginForm setUser={setUser} setUserDetail={setUserDetail} />} />
+          <Route path="/createInstitute" element={<SignupForm setUser={setUser} setUserDetail={setUserDetail} />} />
+        
+      </Routes>
+        </div>
+        
+        
       )}
     
     </div>
     </Router>
+
+   
   );
 }
 

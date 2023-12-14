@@ -41,8 +41,12 @@ height: 100vh;
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
+    margin-top: .4rem;
+    /* margin-bottom: 2.5rem; */
+  }
+  .btn-div{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
   
   .login-form button:hover {

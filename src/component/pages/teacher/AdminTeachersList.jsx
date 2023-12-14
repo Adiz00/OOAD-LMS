@@ -22,7 +22,8 @@ const AdminTeachersList = ({teachersArr}) => {
       console.log('teachers in',teachersArr)
   return (
     <div>
-         {teachersArr.map((x, i) => { 
+         {teachersArr && teachersArr.length > -1 ? 
+         teachersArr.map((x, i) => { 
         return (
           <div key={i} className="main-tch-list-div"> 
             <div className="main-tch-list-div1">
@@ -57,7 +58,12 @@ const AdminTeachersList = ({teachersArr}) => {
             </div>
           </div>
         );
-      })}
+        })
+        :
+        <div>
+           <h1>Network Problem</h1>
+        </div>
+    }
     </div>
   )
 }

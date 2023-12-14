@@ -156,6 +156,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import loadingGif from '../../assets/images/loading.gif';
+import { IP } from "../../data";
+
 
 const AddCourses = () => {
   const [open, setOpen] = useState(false);
@@ -164,7 +166,7 @@ const AddCourses = () => {
   const [courseName, setCourseName] = useState('');
 
   var fetchCourses=()=>{
-    fetch("https://tiny-pullover-goat.cyclic.app/api/courses")
+    fetch(`http://${IP}:8000/api/courses`)
       .then((response) => response.json())
       .then((data) => {
         console.log("data ",data)
@@ -197,7 +199,7 @@ const AddCourses = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('https://tiny-pullover-goat.cyclic.app/api/course', {
+      const response = await fetch(`http://${IP}:8000/api/course`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

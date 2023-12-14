@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import loadingGif from '../../assets/images/loading.gif';
+import { IP } from '../../data';
 
 const StdAnnouncements = ({userDetail}) => {
 
@@ -62,7 +63,7 @@ const StdAnnouncements = ({userDetail}) => {
 
     const fetchCourses = () => {
       setLoading(true)
-      fetch('http://localhost:8000/api/courses')
+      fetch(`http://${IP}:8000/api/courses`)
         .then((response) => response.json())
         .then((data) => {
           // console.log(data.data);

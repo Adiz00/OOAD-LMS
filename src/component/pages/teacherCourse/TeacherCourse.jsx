@@ -5,13 +5,14 @@ import AdminCourseCard from '../course/AdminCourseCard';
 const TeacherCourse = ({userDetail}) => {
   
     const[CoursesArr,setCoursesArr]=useState([{course_name:userDetail.teacher_course}])
-console.log(CoursesArr.course_name)
+console.log(CoursesArr.course_name);
+console.log('userDetail ',userDetail);
   
   return (
     <div>
     <div>
     {/* <Sidebar /> */}
-    <Navbar />
+    <Navbar userName={userDetail.teacher_name} />
     <div className="right-page">
      <div className="content">
      <div className="Content-inner-Content">

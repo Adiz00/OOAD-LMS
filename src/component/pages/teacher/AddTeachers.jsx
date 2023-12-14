@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import loadingGif from '../../assets/images/loading.gif';
+import { IP } from '../../data';
 
 const AddTeachers = () => {
   const [open, setOpen] = useState(false);
@@ -30,7 +31,7 @@ const AddTeachers = () => {
   });
 
   const fetchTeachers = () => {
-    fetch('http://localhost:8000/api/teachers')
+    fetch(`http://${IP}:8000/api/teachers`)
       .then((response) => response.json())
       .then((data) => {
         setTeachers(data.data);
@@ -43,7 +44,7 @@ const AddTeachers = () => {
   };
 
   const fetchCourses = () => {
-    fetch('http://localhost:8000/api/courses')
+    fetch(`http://${IP}:8000/api/courses`)
       .then((response) => response.json())
       .then((data) => {
         setCourses(data.data);
@@ -85,7 +86,7 @@ const AddTeachers = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/teacher', {
+      const response = await fetch(`http://${IP}:8000/api/teacher`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -153,7 +154,7 @@ const AddTeachers = () => {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                {courses.map((course) => (
+                {courses && courses.map((course) => (
                   <MenuItem key={course._id} value={course.course_name}>
                     {course.course_name}
                   </MenuItem>

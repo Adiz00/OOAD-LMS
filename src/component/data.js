@@ -109,7 +109,10 @@
       section: "logout",
     },
   ];
+
+  // const IP='192.168.100.5'
+  const IP='192.168.0.114'
   export {
    
-    stdSidebarNavItems,adminSidebarNavItems,teacherSidebarNavItems
+    stdSidebarNavItems,adminSidebarNavItems,teacherSidebarNavItems,IP
 }

@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import './logInForm.css';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import { Link, useNavigate  } from 'react-router-dom'; // Import the useHistory hook from react-router-dom
+
 import { TextField } from '@mui/material';
+import { IP } from '../../data';
 
 const LoginForm = ({setUser,setUserDetail}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 // error msg
 const [open, setOpen] = React.useState(false);
+
+const navigate = useNavigate (); 
 
   // const handleSubmit = (event) => {
   //   event.preventDefault();
@@ -31,13 +36,17 @@ const [open, setOpen] = React.useState(false);
 
   // };
 
+  const handleCreateInstitute = () => {
+    navigate('/createInstitute');
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if(email == "admin@gmail.com" && password == '12345'){setUser('admin')}
     else{
 
       try {
-        const response = await fetch('https://tiny-pullover-goat.cyclic.app/api/login', {
+        const response = await fetch(`http://${IP}:8000/api/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -60,13 +69,14 @@ const [open, setOpen] = React.useState(false);
           console.log('user detail in',userDetail)
         } else {
           // Login failed
+          console.error('Error:');
           setUser(null);
-          setOpen(true);
+          setOpen((prevOpen) => true);
         }
       } catch (error) {
         console.error('Error:', error);
         setUser(null);
-        setOpen(true);
+        setOpen((prevOpen) => true);
       }
   
 
@@ -117,12 +127,19 @@ const [open, setOpen] = React.useState(false);
     onChange={(e) => setPassword(e.target.value)}
       required
       />
+      <div className='btn-div'>
       <button type="submit">Log In</button>
+      <button to="/createInstitute" onClick={()=>{handleCreateInstitute()}}>Create Institute</button>
+      
+      </div>
+
       { open &&
+      
       <Alert severity="error">
-  
-  Invalid credentials — <strong>check it out!</strong>
-</Alert>}
+      Invalid credentials — <strong>check it out!</strong>
+      </Alert>
+      }
+
     </form>
 
     {/*=========================== // error msg =========================== */}

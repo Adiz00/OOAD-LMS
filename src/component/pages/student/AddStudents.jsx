@@ -16,6 +16,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import loadingGif from '../../assets/images/loading.gif';
+import { IP } from '../../data'
 
 const AddStudents = () => { 
 
@@ -30,7 +31,7 @@ const AddStudents = () => {
     stdCourse: '',
   });
   const fetchStudents = () => {
-    fetch('http://localhost:8000/api/students')
+    fetch(`http://${IP}:8000/api/students`)
       .then((response) => response.json())
       .then((data) => {
         setStudents(data.data);
@@ -43,7 +44,7 @@ const AddStudents = () => {
   };
 
   const fetchCourses = () => {
-    fetch('http://localhost:8000/api/courses')
+    fetch(`http://${IP}:8000/api/courses`)
       .then((response) => response.json())
       .then((data) => {
         setCourses(data.data);
@@ -85,7 +86,7 @@ const AddStudents = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/student', {
+      const response = await fetch(`http://${IP}:8000/api/student`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

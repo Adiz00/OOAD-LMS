@@ -1,6 +1,6 @@
 import React from "react";
 import "./navbar.css";
-const Navbar = () => {
+const Navbar = ({userName}) => {
   return (
     <div className="navbar">
       <div className="navContent">
@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className="nav-iconAndName-div">
         <div className="nav-icon-div">
         <i class='bx bx-bell'></i>        </div>
-        <div className="nav-name-div">Anna De Armus</div>
+        <div className="nav-name-div">{userName}</div>
         </div>
         
       </div>
