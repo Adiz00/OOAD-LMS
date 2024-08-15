@@ -2,7 +2,7 @@
 // import './adminCourseCard.css'
 // import Book from '../../assets/images/bookCouese.png'
 // const AdminCourseCard = ({CoursesArr}) => {
-   
+
 //   return (
 //     <div>
 //         <div class="admin-card-container">
@@ -34,41 +34,35 @@
 // ========================================================
 // ========================================================
 
-import React from 'react'
-import './adminCourseCard.css'
-import Book from '../../assets/images/bookCouese.png'
+import React from "react";
+import "./adminCourseCard.css";
+import Book from "../../assets/images/bookCouese.png";
 
-const AdminCourseCard = ({ CoursesArr ,userDetail }) => {
-  console.log(CoursesArr)
+const AdminCourseCard = ({ CoursesArr, userDetail, showInstitute }) => {
+  console.log(CoursesArr);
   return (
     <div>
-      
       <div className="admin-card-container">
-        {
-CoursesArr && CoursesArr.map((x, i) => {
-          return (
-            <div key={i} className="card">
-              <div className="imgBx">
-                
-                <img src={Book} alt="" />
+        {CoursesArr &&
+          CoursesArr.map((x, i) => {
+            return (
+              <div key={i} className="card">
+                <div className="imgBx">
+                  <img src={Book} alt="" />
+                </div>
+                <div className="contentBx">
+                  <h2>{x.course_name}</h2>
+                  {showInstitute ? <p>By : {x.course_Institute}</p> : null}
+                  <a href="#">
+                    <i className="bx bx-right-arrow-alt"></i>
+                  </a>
+                </div>
               </div>
-              <div className="contentBx">
-                <h2>{x.course_name
-}</h2>
-                <a href="#">
-                  <i className="bx bx-right-arrow-alt"></i>
-                </a>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
-      
-      
-     
     </div>
-  )
-}
+  );
+};
 
-export default AdminCourseCard
-
+export default AdminCourseCard;

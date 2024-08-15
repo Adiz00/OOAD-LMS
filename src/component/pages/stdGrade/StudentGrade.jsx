@@ -10,7 +10,7 @@ import { Chart } from 'chart.js/auto';
 
 
 
-const StudentGrade = () => {
+const StudentGrade = ({userDetail}) => {
 
     // =====================       grades arr       =================================
 
@@ -142,7 +142,7 @@ let gradesArr=[
     <div>
     <div>
     {/* <Sidebar /> */}
-    <Navbar />
+    <Navbar userName={userDetail.std_name} />
     <div className="right-page">
      <div className="content">
      <div className="Content-inner-Content">

@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
-const StdQuiz = () => {
+const StdQuiz = ({userDetail}) => {
       // =====================       grades arr       =================================
 
 let gradesArr=[
@@ -110,7 +110,7 @@ let gradesArr=[
     <div>
     <div>
     {/* <Sidebar /> */}
-    <Navbar />
+    <Navbar userName={userDetail.std_name} />
     <div className="right-page">
      <div className="content">
      <div className="Content-inner-Content">

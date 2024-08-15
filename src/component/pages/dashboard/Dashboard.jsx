@@ -16,13 +16,13 @@ const cardArr = [
   
   // { img: Teach, title: "Teachers", navigate: "" },
 ];
-const Dashboard = () => {
+const Dashboard = ({userDetail}) => {
   console.log(cardArr,' dash ')
 
   return (
     <div>
       {/* <Sidebar /> */}
-      <Navbar /> 
+      <Navbar userName={userDetail.institute_name} /> 
       <div className="right-page">
        <div className="content">
         <div className="dashboardContent">

@@ -10,7 +10,7 @@ console.log(CoursesArr.course_name)
     <div>
     <div>
     {/* <Sidebar /> */}
-    <Navbar />
+    <Navbar userName={userDetail.std_name} />
     <div className="right-page">
      <div className="content">
      <div className="Content-inner-Content">

@@ -158,10 +158,10 @@ console.log('user detail ',userDetail)
           <Sidebar sidebarNavItems={adminSidebarNavItems} setUser={setUser} />
           <Routes>
             {/* <Route path='/' element={<AppLayout />}> */}
-            <Route index element={<Dashboard />} />
-            <Route path="/addCourse" element={<AddCourses />} />
-            <Route path="/addStudent" element={<AddStudents />} />
-            <Route path="/addTeacher" element={<AddTeachers />} />
+            <Route index element={<Dashboard userDetail={userDetail} />} />
+            <Route path="/addCourse" element={<AddCourses userDetail={userDetail} />} />
+            <Route path="/addStudent" element={<AddStudents userDetail={userDetail} />} />
+            <Route path="/addTeacher" element={<AddTeachers userDetail={userDetail} />} />
             {/* <Route path="/createInstitute" element={<SignupForm />} /> */}
             
             {/* </Route> */}
@@ -172,10 +172,10 @@ console.log('user detail ',userDetail)
         <Sidebar sidebarNavItems={stdSidebarNavItems} setUser={setUser}/>
         <Routes>
           {/* <Route path='/' element={<AppLayout />}> */}
-          <Route index element={<StdDashboard/>} />
+          <Route index element={<StdDashboard userDetail={userDetail}/>} />
           <Route path="/stdCourse" element={<StdCourses userDetail={userDetail} />} />
-          <Route path="/stdQuiz" element={<StdQuiz />} />
-          <Route path="/studentGrade" element={<StudentGrade />} />
+          <Route path="/stdQuiz" element={<StdQuiz userDetail={userDetail} />} />
+          <Route path="/studentGrade" element={<StudentGrade userDetail={userDetail} />} />
           <Route path="/stdAnnouncements" element={<StdAnnouncements userDetail={userDetail}/>} />
           {/* <Route path="/createInstitute" element={<SignupForm />} /> */}
           {/* <Route path="/logout" element={<LoginForm />} /> */}
@@ -187,11 +187,11 @@ console.log('user detail ',userDetail)
         <Sidebar sidebarNavItems={teacherSidebarNavItems} setUser={setUser} />
         <Routes>
           {/* <Route path='/' element={<AppLayout />}> */}
-          <Route index element={<TeacherDashboard />} />
+          <Route index element={<TeacherDashboard userDetail={userDetail} />} />
           <Route path="/teacherCourse" element={<TeacherCourse userDetail={userDetail} />} />
           <Route path="/teacherAnnouncements" element={<TeacherAnnouncements userDetail={userDetail} />} />
-          <Route path="/teacherQuiz" element={<TeacherQuiz />} />
-          <Route path="/TeacherGrade" element={<TeacherGrade />} />
+          <Route path="/teacherQuiz" element={<TeacherQuiz userDetail={userDetail} />} />
+          <Route path="/TeacherGrade" element={<TeacherGrade userDetail={userDetail}/>} />
           {/* <Route path="/createInstitute" element={<SignupForm />} /> */}
           {/* <Route path="/logout" element={<LoginForm />} /> */}
 

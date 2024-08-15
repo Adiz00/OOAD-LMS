@@ -18,7 +18,7 @@ import Select from '@mui/material/Select';
 import loadingGif from '../../assets/images/loading.gif';
 import { IP } from '../../data'
 
-const AddStudents = () => { 
+const AddStudents = ({userDetail}) => { 
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -29,12 +29,19 @@ const AddStudents = () => {
     stdEmail: '',
     stdPassword: '',
     stdCourse: '',
+    stdInstitute: userDetail?.institute_name
   });
   const fetchStudents = () => {
     fetch(`http://${IP}:8000/api/students`)
       .then((response) => response.json())
       .then((data) => {
-        setStudents(data.data);
+
+         // filtered std by specific institute
+        let filteredStd = data.data.filter(
+          (d) => d?.std_Institute?.toLowerCase() == userDetail?.institute_name?.toLowerCase()
+          );
+
+        setStudents(filteredStd);
         setLoading(false);
       })
       .catch((error) => {
@@ -47,7 +54,12 @@ const AddStudents = () => {
     fetch(`http://${IP}:8000/api/courses`)
       .then((response) => response.json())
       .then((data) => {
-        setCourses(data.data);
+
+         // filtered Courses by specific institute
+         let filteredCourses = data.data.filter(
+          (d) => d.course_Institute == userDetail.institute_name
+        );
+        setCourses(filteredCourses);
       })
       .catch((error) => {
         console.error('Error fetching courses:', error);
@@ -110,7 +122,7 @@ const AddStudents = () => {
     <div>
       <div>
       {/* <Sidebar /> */} 
-      <Navbar />
+      <Navbar userName={userDetail.institute_name} />
       <div className="right-page">
        <div className="content">
        <div className="Content-inner-Content">

@@ -111,6 +111,16 @@
     margin: 0;
     font-size: 1.1rem;
   }
+
+  .admin-card-container .card .contentBx p{
+    position: relative;
+    font-weight: 600;
+    /* letter-spacing: 1px; */
+    /* color: #fff; */
+    color: var(--grey);
+    margin-top: 6px;
+    font-size: .9rem;
+  }
   
   .admin-card-container .card .contentBx .size, .admin-card-container .card .contentBx .color {
     display: flex;

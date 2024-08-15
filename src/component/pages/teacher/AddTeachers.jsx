@@ -18,7 +18,7 @@ import Select from '@mui/material/Select';
 import loadingGif from '../../assets/images/loading.gif';
 import { IP } from '../../data';
 
-const AddTeachers = () => {
+const AddTeachers = ({userDetail}) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [teachers, setTeachers] = useState([]);
@@ -28,14 +28,22 @@ const AddTeachers = () => {
     teacherEmail: '',
     teacherPassword: '',
     teacherCourse: '',
+    teacherInstitute: userDetail?.institute_name
   });
 
   const fetchTeachers = () => {
     fetch(`http://${IP}:8000/api/teachers`)
       .then((response) => response.json())
       .then((data) => {
-        setTeachers(data.data);
+
+         // filtered teacher by specific institute
+        let filteredteacher = data.data.filter(
+          (d) => d?.teacher_Institute?.toLowerCase() == userDetail?.institute_name?.toLowerCase()
+          );
+       
+        setTeachers(filteredteacher);
         setLoading(false);
+        console.log(filteredteacher);
       })
       .catch((error) => {
         console.error('Error fetching teachers:', error);
@@ -47,7 +55,12 @@ const AddTeachers = () => {
     fetch(`http://${IP}:8000/api/courses`)
       .then((response) => response.json())
       .then((data) => {
-        setCourses(data.data);
+
+         // filtered Courses by specific institute
+         let filteredCourses = data.data.filter(
+          (d) => d.course_Institute == userDetail.institute_name
+        );
+        setCourses(filteredCourses);
       })
       .catch((error) => {
         console.error('Error fetching courses:', error);
@@ -81,16 +94,24 @@ const AddTeachers = () => {
       [id]: value,
     }));
 
-    console.log('teacher data ',teacherData)
+    // console.log('teacher data ',teacherData)
   };
 
   const handleSave = async () => {
+
+    // setTeacherData((prevData) => ({
+    //   ...prevData,
+    //   teacherInstitute: userDetail.institute_name
+    // }));
+    // console.log('teacherData ',teacherData);
+
     try {
       const response = await fetch(`http://${IP}:8000/api/teacher`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        
         body: JSON.stringify(teacherData),
       });
       const data = await response.json();
@@ -109,7 +130,7 @@ const AddTeachers = () => {
     <div>
       <div>
         {/* <Sidebar /> */}
-        <Navbar />
+        <Navbar userName={userDetail.institute_name} />
         <div className="right-page">
           <div className="content">
             <div className="Content-inner-Content">

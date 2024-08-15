@@ -41,11 +41,11 @@ let announcementArr = [
     time: "2 days ago", 
     courseName: "Blockchain",
   },]
-const TeacherDashboard = () => {
+const TeacherDashboard = ({userDetail}) => {
   return (
     <div>
     {/* <Sidebar /> */}
-    <Navbar />
+    <Navbar userName={userDetail.teacher_name} />
     <div className="right-page">
      <div className="content">
       <div className="dashboardContent">

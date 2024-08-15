@@ -1,12 +1,12 @@
 import React from 'react'
 import './teacherGrade.css'
 import Navbar from '../../navbar/Navbar'
-const TeacherGrade = () => {
+const TeacherGrade = ({userDetail}) => {
   return (
     <div>
     <div>
     {/* <Sidebar /> */}
-    <Navbar />
+    <Navbar userName={userDetail.teacher_name}/>
     <div className="right-page">
      <div className="content">
      <div className="Content-inner-Content">

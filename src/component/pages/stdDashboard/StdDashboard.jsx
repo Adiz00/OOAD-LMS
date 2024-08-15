@@ -35,12 +35,12 @@ let announcementArr = [
     time: "2 days ago",
     courseName: "Blockchain",
   },]
-const StdDashboard = () => {
+const StdDashboard = ({userDetail}) => {
   
   return (
     <div>
     {/* <Sidebar /> */}
-    <Navbar />
+    <Navbar userName={userDetail.std_name} />
     <div className="right-page">
      <div className="content">
       <div className="dashboardContent">
